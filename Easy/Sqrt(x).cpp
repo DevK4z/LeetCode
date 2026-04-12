@@ -2,9 +2,15 @@
 using namespace std;
 class Solution {
 public:
-    // Time complexity: O(1)
-    // Using built-in function
+    // Time complexity: O(log(x))
+    // Binary search approach
     int mySqrt(int x) {
-        return (int)sqrt(x);
+        int l = 1, r = x;
+        while (l <= r) {
+            int m = l + (r - l) /2;
+            if (m <= x / m) l = m + 1;
+            else r = m - 1;
+        }
+        return r;
     }
 };
